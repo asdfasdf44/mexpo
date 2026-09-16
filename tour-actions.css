@@ -25,3 +25,54 @@
 @keyframes arrow-glow { 0%, 100% { box-shadow: 0 0 10px var(--arrow-glow), 0 0 24px var(--arrow-glow), inset 0 1px 5px rgba(255, 255, 255, .75); } 50% { box-shadow: 0 0 14px var(--arrow-glow), 0 0 32px var(--arrow-glow), inset 0 1px 7px rgba(255, 255, 255, .9); } }
 @keyframes tour-background-drift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
 @media (prefers-reduced-motion: reduce) { .tour-section { animation: none; } }
+
+
+/* 카드 아래의 전체 전시 목록 버튼 */
+.tour-all-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  width: fit-content;
+  min-width: 300px;
+  margin: 44px auto 0;
+  padding: 14px 25px 15px;
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: linear-gradient(#101814, #101814) padding-box, linear-gradient(105deg, #d8ff63 0%, #f15a35 48%, #18dfb2 100%) border-box;
+  background-size: 100% 100%, 180% 100%;
+  color: #f7f8ed;
+  box-shadow: 0 7px 18px rgba(23, 34, 30, .14), inset 0 1px 0 rgba(255, 255, 255, .08);
+  font: 500 14px 'Noto Sans KR', sans-serif;
+  letter-spacing: .055em;
+  text-decoration: none;
+  transition: transform 260ms cubic-bezier(.22, 1, .36, 1), box-shadow 260ms ease, background-position 420ms ease;
+}
+
+.tour-all-button span {
+  font: 24px/1 'DM Mono', monospace;
+  transition: transform 260ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.tour-all-button:hover,
+.tour-all-button:focus-visible {
+  background-position: 0 0, 100% 50%;
+  box-shadow: 0 12px 27px rgba(23, 34, 30, .22), 0 0 17px rgba(24, 223, 178, .18), inset 0 1px 0 rgba(255, 255, 255, .15);
+  outline: 2px solid #17221e;
+  outline-offset: 4px;
+  transform: translateY(-3px);
+}
+
+.tour-all-button:hover span,
+.tour-all-button:focus-visible span {
+  transform: translateX(4px);
+}
+
+@media (max-width: 700px) {
+  .tour-all-button {
+    min-width: 0;
+    margin-top: 30px;
+    padding: 14px 20px 15px;
+    font-size: 13px;
+  }
+}

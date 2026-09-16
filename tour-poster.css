@@ -39,4 +39,9 @@
   display: block;
   position: relative;
   z-index: 1;
+  transition: transform 420ms cubic-bezier(.22, 1, .36, 1);
+}
+
+.tour-card:hover .tour-poster {
+  transform: scale(1.055);
 }

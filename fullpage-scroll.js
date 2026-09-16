@@ -34,7 +34,8 @@ function moveToSection(direction) {
 }
 
 window.addEventListener('wheel', function(event) {
-  if (event.deltaY === 0 || document.querySelector('#loginModal').open) return;
+  const loginModal = document.querySelector('#loginModal');
+  if (event.deltaY === 0 || loginModal?.open) return;
   event.preventDefault();
   if (!moving) moveToSection(event.deltaY > 0 ? 1 : -1);
 }, { passive: false });

@@ -6,7 +6,7 @@ const tours = [
 ];
 const grid = document.querySelector('#tourGrid');
 grid.innerHTML = tours.map(function(tour) {
-  return '<article class="tour-card"><div class="visual ' + tour.style + '"></div><div class="card-top"><span>' + tour.number + ' / 03</span><span>VR TOUR</span></div><div class="card-bottom"><div><div class="card-title">' + tour.title + '</div><span>' + tour.place + '</span></div><button class="enter-tour" data-url="' + tour.vrUrl + '" aria-label="' + tour.title + ' VR 투어 입장">↗</button></div></article>';
+  return '<article class="tour-card"><div class="visual ' + tour.style + '"></div><div class="card-top"><span>' + tour.number + ' / 03</span><span>VR TOUR</span></div><div class="card-bottom"><button class="enter-tour" data-url="' + tour.vrUrl + '" aria-label="' + tour.title + ' VR 투어 입장">→</button></div></article>';
 }).join('');
 document.querySelectorAll('.enter-tour').forEach(function(button) {
   button.addEventListener('click', function() {

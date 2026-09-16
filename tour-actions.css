@@ -23,21 +23,28 @@
   width: 54px;
   height: 54px;
   place-items: center;
-  border: 2px solid transparent;
-  background: #d8ff63;
-  color: #17221e;
-  box-shadow: 0 4px 0 rgba(23, 34, 30, .18);
+  border: 1px solid rgba(255, 255, 255, .55);
+  background: radial-gradient(circle at 34% 27%, #ffffcf 0%, #d8ff63 27%, rgba(140, 246, 156, .58) 52%, rgba(37, 59, 54, .76) 100%);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(216, 255, 99, .95), 0 0 26px rgba(216, 255, 99, .6), inset 0 1px 5px rgba(255, 255, 255, .8);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, .55);
   font-size: 30px;
   font-weight: 700;
   line-height: 1;
-  transition: transform 260ms cubic-bezier(.22, 1, .36, 1), background 260ms ease, box-shadow 260ms ease;
+  animation: arrow-glow 2.8s ease-in-out infinite;
+  transition: transform 260ms cubic-bezier(.22, 1, .36, 1), filter 260ms ease, box-shadow 260ms ease;
 }
 
 .tour-card:hover .enter-tour,
 .tour-card .enter-tour:focus-visible {
   transform: translate(3px, -4px) scale(1.1);
-  background: #fff;
-  box-shadow: 0 10px 18px rgba(23, 34, 30, .25);
+  filter: brightness(1.22) saturate(1.12);
+  box-shadow: 0 0 16px rgba(216, 255, 99, 1), 0 0 38px rgba(216, 255, 99, .8), inset 0 1px 7px rgba(255, 255, 255, .9);
   outline: 2px solid #17221e;
   outline-offset: 3px;
+}
+
+@keyframes arrow-glow {
+  0%, 100% { box-shadow: 0 0 10px rgba(216, 255, 99, .78), 0 0 24px rgba(216, 255, 99, .42), inset 0 1px 5px rgba(255, 255, 255, .75); }
+  50% { box-shadow: 0 0 14px rgba(216, 255, 99, 1), 0 0 32px rgba(216, 255, 99, .7), inset 0 1px 7px rgba(255, 255, 255, .9); }
 }

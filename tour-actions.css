@@ -48,3 +48,48 @@
   0%, 100% { box-shadow: 0 0 10px rgba(216, 255, 99, .78), 0 0 24px rgba(216, 255, 99, .42), inset 0 1px 5px rgba(255, 255, 255, .75); }
   50% { box-shadow: 0 0 14px rgba(216, 255, 99, 1), 0 0 32px rgba(216, 255, 99, .7), inset 0 1px 7px rgba(255, 255, 255, .9); }
 }
+
+/* 카드별 색감과 일치하는 중앙 하단 링크 버튼 */
+.tour-card .card-bottom {
+  position: absolute;
+  z-index: 3;
+  right: 0;
+  bottom: 18px;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.tour-card .enter-tour {
+  --arrow-light: #fff1d6;
+  --arrow-mid: #fd6f22;
+  --arrow-dark: #7a2e1b;
+  --arrow-glow: rgba(253, 111, 34, .72);
+  background: radial-gradient(circle at 34% 27%, var(--arrow-light) 0%, var(--arrow-mid) 38%, var(--arrow-dark) 100%);
+  box-shadow: 0 0 10px var(--arrow-glow), 0 0 26px var(--arrow-glow), inset 0 1px 5px rgba(255, 255, 255, .8);
+}
+
+.tour-card:nth-child(2) .enter-tour {
+  --arrow-light: #f8dcff;
+  --arrow-mid: #ad45d7;
+  --arrow-dark: #472052;
+  --arrow-glow: rgba(173, 69, 215, .7);
+}
+
+.tour-card:nth-child(3) .enter-tour {
+  --arrow-light: #fff0d4;
+  --arrow-mid: #bd9669;
+  --arrow-dark: #4e3833;
+  --arrow-glow: rgba(189, 150, 105, .68);
+}
+
+.tour-card:hover .enter-tour,
+.tour-card .enter-tour:focus-visible {
+  box-shadow: 0 0 16px var(--arrow-glow), 0 0 38px var(--arrow-glow), inset 0 1px 7px rgba(255, 255, 255, .9);
+}
+
+@keyframes arrow-glow {
+  0%, 100% { box-shadow: 0 0 10px var(--arrow-glow), 0 0 24px var(--arrow-glow), inset 0 1px 5px rgba(255, 255, 255, .75); }
+  50% { box-shadow: 0 0 14px var(--arrow-glow), 0 0 32px var(--arrow-glow), inset 0 1px 7px rgba(255, 255, 255, .9); }
+}

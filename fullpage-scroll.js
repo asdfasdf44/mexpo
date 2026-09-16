@@ -48,3 +48,24 @@ window.addEventListener('touchend', function(event) {
   const distance = touchStartY - event.changedTouches[0].screenY;
   if (Math.abs(distance) > 45) moveToSection(distance > 0 ? 1 : -1);
 }, { passive: true });
+
+document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+  link.addEventListener('click', function(event) {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target || moving) return;
+    event.preventDefault();
+    moving = true;
+    const startY = window.scrollY;
+    const destinationY = target.offsetTop;
+    const duration = 1000;
+    const startTime = performance.now();
+
+    function animate(now) {
+      const elapsed = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY + (destinationY - startY) * easeInOutCubic(elapsed));
+      if (elapsed < 1) requestAnimationFrame(animate);
+      else moving = false;
+    }
+    requestAnimationFrame(animate);
+  });
+});

@@ -12,6 +12,17 @@
   object-fit: contain;
   object-position: center;
   pointer-events: none;
+  animation: hero-image-breathe 6s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes hero-image-breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.025); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image { animation: none; }
 }
 
 @media (max-width: 700px) {

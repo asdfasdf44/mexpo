@@ -1,7 +1,13 @@
-// 한 번의 휠 입력으로 한 섹션씩 이동하되, 기본 스냅보다 느린 전환을 제공합니다.
+// Desktop uses one smooth section transition per input. Mobile keeps native scrolling.
 const sections = Array.from(document.querySelectorAll('.hero, .tour-section, .manifesto, .shop-section, footer'));
 let moving = false;
 let touchStartY = 0;
+const desktopScrollQuery = window.matchMedia('(min-width: 701px)');
+
+function isFullPageScrollEnabled() {
+  return desktopScrollQuery.matches
+    && !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 function easeInOutCubic(progress) {
   return progress < 0.5
@@ -10,7 +16,7 @@ function easeInOutCubic(progress) {
 }
 
 function moveToSection(direction) {
-  if (moving || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (moving || !isFullPageScrollEnabled()) return;
   const currentY = window.scrollY;
   const currentIndex = sections.reduce(function(best, section, index) {
     return Math.abs(section.offsetTop - currentY) < Math.abs(sections[best].offsetTop - currentY) ? index : best;
@@ -35,16 +41,18 @@ function moveToSection(direction) {
 
 window.addEventListener('wheel', function(event) {
   const loginModal = document.querySelector('#loginModal');
-  if (event.deltaY === 0 || loginModal?.open) return;
+  if (!isFullPageScrollEnabled() || event.deltaY === 0 || loginModal?.open) return;
   event.preventDefault();
   if (!moving) moveToSection(event.deltaY > 0 ? 1 : -1);
 }, { passive: false });
 
 window.addEventListener('touchstart', function(event) {
+  if (!isFullPageScrollEnabled()) return;
   touchStartY = event.changedTouches[0].screenY;
 }, { passive: true });
 
 window.addEventListener('touchend', function(event) {
+  if (!isFullPageScrollEnabled()) return;
   const distance = touchStartY - event.changedTouches[0].screenY;
   if (Math.abs(distance) > 45) moveToSection(distance > 0 ? 1 : -1);
 }, { passive: true });
@@ -52,7 +60,7 @@ window.addEventListener('touchend', function(event) {
 document.querySelectorAll('a[href^="#"]').forEach(function(link) {
   link.addEventListener('click', function(event) {
     const target = document.querySelector(link.getAttribute('href'));
-    if (!target || moving) return;
+    if (!isFullPageScrollEnabled() || !target || moving) return;
     event.preventDefault();
     moving = true;
     const startY = window.scrollY;

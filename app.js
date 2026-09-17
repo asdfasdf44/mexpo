@@ -1,7 +1,7 @@
 // 각 전시의 vrUrl만 이미 만든 VR 투어 주소로 교체하세요.
 const tours = [
   { number: '01', title: '빛의 산책', place: 'MUSEUM OF LIGHT', style: 'v1', vrUrl: 'https://asdfasdf44.github.io/mandadoC/vtour/tour.html' },
-  { number: '02', title: '경계의 감각', place: 'SEOUL ART SPACE', style: 'v2', vrUrl: 'https://example.com/your-vr-tour-2' },
+  { number: '02', title: '경계의 감각', place: 'SEOUL ART SPACE', style: 'v2', vrUrl: 'https://asdfasdf44.github.io/mandadoC/popup-tour/' },
   { number: '03', title: '우리의 방', place: 'CONTEMPORARY HALL', style: 'v3', vrUrl: 'https://example.com/your-vr-tour-3' }
 ];
 const grid = document.querySelector('#tourGrid');

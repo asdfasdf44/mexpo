@@ -2,7 +2,7 @@
 const tours = [
   { number: '01', title: '빛의 산책', place: 'MUSEUM OF LIGHT', style: 'v1', vrUrl: 'https://asdfasdf44.github.io/mandadoC/vtour/tour.html' },
   { number: '02', title: '경계의 감각', place: 'SEOUL ART SPACE', style: 'v2', vrUrl: 'https://asdfasdf44.github.io/mandadoC/popup-tour/' },
-  { number: '03', title: '우리의 방', place: 'CONTEMPORARY HALL', style: 'v3', vrUrl: 'https://example.com/your-vr-tour-3' }
+  { number: '03', title: '강남 팝업 2026', place: 'POP UP STORE 2026', style: 'v3', vrUrl: 'https://asdfasdf44.github.io/mandadoC/gangnam-popup/tour.html' }
 ];
 const grid = document.querySelector('#tourGrid');
 grid.innerHTML = tours.map(function(tour) {
